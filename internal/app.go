@@ -26,6 +26,23 @@ var multiHTML string
 //go:embed html/single.html
 var singleHTML string
 
+const (
+	title  = "Magisk 字体模块生成器"
+	width  = 480
+	height = 720
+)
+
+// ShowMainWindow shows the main window of the application.
+func ShowMainWindow(debug bool) {
+	w := webview.New(debug)
+	defer w.Destroy()
+	w.SetTitle(title)
+	w.SetSize(width, height, webview.HintNone)
+	AllBindCollection(w)
+	w.SetHtml(indexHTML)
+	w.Run()
+}
+
 // AllBindCollection all bind collection
 func AllBindCollection(w webview.WebView) {
 	w.Bind("github", openURL("https://github.com/aimerneige/MagiskFontCreator"))
