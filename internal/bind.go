@@ -35,6 +35,7 @@ func AllBindCollection(w webview.WebView) {
 	w.Bind("indexPage", switchPage(w, indexHTML))
 	w.Bind("multiPage", switchPage(w, multiHTML))
 	w.Bind("singlePage", switchPage(w, singleHTML))
+	w.Bind("generateSingle", generateSingleFontPack())
 }
 
 // openURL open url in browser
@@ -60,6 +61,14 @@ func switchPage(w webview.WebView, html string) interface{} {
 	return func() error {
 		sEnc := b64.StdEncoding.EncodeToString([]byte(html))
 		w.Navigate("data:text/html;base64," + sEnc)
+		return nil
+	}
+}
+
+// generateSingleFontPack 生成单字体字体模块
+func generateSingleFontPack() interface{} {
+	return func(fontBase64, moduleID, moduleName, version, versionCode, author, description string) error {
+
 		return nil
 	}
 }
