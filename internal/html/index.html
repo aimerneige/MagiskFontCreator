@@ -21,8 +21,8 @@
         <div class="mdui-toolbar mdui-color-teal">
             <a class="mdui-typo-headline">Magisk 字体模块生成器</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a href="https://github.com/aimerneige/MagiskFontCreator/" target="_blank"
-                class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'GitHub'}">
+            <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-tooltip="{content: 'GitHub'}"
+                onclick="github()">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36"
                     enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon"
@@ -31,22 +31,28 @@
                         d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z">
                     </path>
                 </svg>
-            </a>
+            </button>
         </div>
     </div>
 
 
     <!-- Main Body -->
     <div class="mdui-container-fluid">
+        <p class=".mdui-typo">
+            本软件是一个用于生成 Magisk 字体模块的工具，由于恶意 Magisk 模块可能会带来严重的安全隐患，使用本软件之前请务必确认软件来源，不要使用除 GitHub 外任何平台下载的软件。
+        </p>
 
+        <h3 class=".mdui-typo">
+            使用帮助
+        </h3>
         <p class=".mdui-typo">
             如果你只有一个 ttf 或 otf 文件，使用“简易单字体模式”
         </p>
         <p class=".mdui-typo">
-            如果你有多自重的字体家族，使用“简易多字重模式”
+            如果你有多字重的字体家族，使用“简易多字重模式”
         </p>
         <p class=".mdui-typo">
-            如果你想要为英文、简体中文、繁体中文、日文、韩文等调整不同的字体，选择“高级 cjk 模式”
+            如果你想要为英文、简体中文、繁体中文、日文、韩文等调整不同的字体，使用“高级 cjk 模式”
         </p>
 
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
@@ -65,18 +71,24 @@
         </button>
 
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
-            onclick="aboutClick()">
+            onclick="aboutPage()">
             关于
         </button>
 
+        <h3 class=".mdui-typo">
+            免责声明
+        </h3>
+        <p class=".mdui-typo">
+            刷机、刷入 Magisk 模块可能会导致系统无法正常启动，请在操作前审慎考虑，并建议备份重要数据。因操作不当导致的系统故障（包括卡开机动画、功能异常、数据丢失等）或效果异常与作者无关。
+        </p>
     </div>
 
     <!-- MDUI JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
         integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
         crossorigin="anonymous"></script>
+    <!-- webview bind script -->
     <script>
-
     </script>
 </body>
 
