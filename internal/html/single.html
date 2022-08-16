@@ -11,6 +11,7 @@
     <!-- MDUI CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
         integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <!-- lxgw-wenkai-screen -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
     <style>
         body {
@@ -43,58 +44,61 @@
 
     <div class="mdui-container-fluid">
 
+        <!-- 使用说明 -->
         <div class="mdui-typo">
             <h5>使用说明</h5>
             <p>选择需要制作模块的 ttf 或 otf 字体文件，并填写模块相关信息后点击“生成字体模块”即可，有疑问请查阅后附注意事项。</p>
         </div>
 
-        <button class="mdui-btn mdui-color-pink mdui-ripple mdui-hoverable" onclick="selectFont()">
-            选择字体文件
-        </button>
-        <label id="font_name"></label>
-
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">模块 id</label>
-            <input class="mdui-textfield-input" id="module_id" type="text"
-                pattern="([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)" required>
-            <div class="mdui-textfield-error">模块 id 不能为空，且不能包含中文及特殊字符</div>
+        <!-- 字体 -->
+        <div class="mdui-typo">
+            <button class="mdui-btn mdui-color-pink mdui-ripple mdui-hoverable" onclick="selectFont()">选择字体文件</button>
+            <label id="font_name">当前没有选择字体</label>
+            <textarea hidden id="font_data" type="text" ></textarea>
         </div>
 
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">模块名称</label>
-            <input class="mdui-textfield-input" id="module_name" required>
-            <div class="mdui-textfield-error">模块名称不能为空</div>
+        <!-- 模块信息 -->
+        <div class="mdui-typo">
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">模块 id</label>
+                <input class="mdui-textfield-input" id="module_id" type="text"
+                    pattern="([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)" required>
+                <div class="mdui-textfield-error">模块 id 不能为空，且需符合包名规则。</div>
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">模块名称</label>
+                <input class="mdui-textfield-input" id="module_name" type="text" required>
+                <div class="mdui-textfield-error">模块名称不能为空</div>
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">版本号</label>
+                <input class="mdui-textfield-input" id="version" type="text" required>
+                <div class="mdui-textfield-error">版本号不能为空</div>
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">版本代码</label>
+                <input class="mdui-textfield-input" id="version_code" type="number" required>
+                <div class="mdui-textfield-error">版本代码不能为空，且必须是数字。</div>
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">模块作者</label>
+                <input class="mdui-textfield-input" id="author" type="text" required>
+                <div class="mdui-textfield-error">模块作者不能为空</div>
+            </div>
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <label class="mdui-textfield-label">模块描述</label>
+                <textarea class="mdui-textfield-input" id="description" type="text" required></textarea>
+                <div class="mdui-textfield-error">模块描述不能为空</div>
+            </div>
         </div>
 
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">版本号</label>
-            <input class="mdui-textfield-input" id="version" required>
-            <div class="mdui-textfield-error">版本号不能为空</div>
-        </div>
-
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">版本代码</label>
-            <input class="mdui-textfield-input" id="version_code" required>
-            <div class="mdui-textfield-error">版本代码不能为空</div>
-        </div>
-
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">模块作者</label>
-            <input class="mdui-textfield-input" id="author" required>
-            <div class="mdui-textfield-error">模块作者不能为空</div>
-        </div>
-
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">模块描述</label>
-            <textarea class="mdui-textfield-input" id="description" required></textarea>
-            <div class="mdui-textfield-error">模块描述不能为空</div>
-        </div>
-
+        <!-- 生成按钮 -->
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
             onclick="generate()">
             生成字体模块
         </button>
 
+        <!-- 注意事项 -->
         <div class="mdui-typo">
             <h5>注意事项</h5>
             <ul>
@@ -102,11 +106,12 @@
                 <li>模块 id 不可输入中文，类似于软件包名。示例：“com.aimerneige.magisk.source.han.sans”</li>
                 <li>模块名称可以是中文，类似软件名。示例：“思源黑体字体包”</li>
                 <li>模块版本号类似软件版本。示例：“v1.0.0”</li>
-                <li>版本代码只能是正整数，如果不知道它是什么，使用 1 即可。</li>
+                <li>版本代码只能是正整数，如果你不知道它是什么，使用 1 即可。</li>
                 <li>模块描述示例：“使用「Magisk 字体模块生成器」生成的字体模块，可替换系统字体为思源黑体。”</li>
             </ul>
         </div>
 
+        <!-- 返回按钮 -->
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
             onclick="indexPage()">
             返回主页
@@ -118,13 +123,14 @@
         integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
         crossorigin="anonymous"></script>
     <!-- webview bind script -->
-    <script>
+    <script type="text/javascript">
         var $ = mdui.$;
         function selectFont() {
             var input = document.createElement('input');
             input.type = 'file';
             input.onchange = e => {
                 var file = e.target.files[0];
+                // 检查文件是否为字体文件
                 if ((file.type != "font/ttf") && (file.type != "font/otf")) {
                     mdui.snackbar({
                         message: '请选择正确的字体文件',
@@ -132,9 +138,66 @@
                     });
                     return;
                 }
-                $('#font_name').text(file.name);
+                $('#font_name').text("当前选择的字体文件名：" + file.name);
+                // 读取字体文件并解析为 base64 字符串
+                var reader = new FileReader();
+                reader.readAsArrayBuffer(file);
+                reader.onload = readerEvent => {
+                    var arrayBuffer = readerEvent.target.result;
+                    var base64 = btoa(
+                        new Uint8Array(arrayBuffer)
+                            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+                    );
+                    $('#font_data').text(base64);
+                }
             }
             input.click();
+        }
+        function generate() {
+            if ($('#font_data').val() == '') {
+                mdui.snackbar({
+                    message: '哥们，你手速太快了！字体文件还没选呢！',
+                    position: 'top'
+                });
+                return;
+            }
+            fontData = $('#font_data').val();
+            moduleId = $('#module_id').val();
+            moduleName = $('#module_name').val();
+            version = $('#version').val();
+            versionCode = $('#version_code').val();
+            author = $('#author').val();
+            description = $('#description').val();
+            if (fontData == '' || moduleId == '' || moduleName == '' || version == '' || versionCode == '' || author == '' || description == '') {
+                mdui.snackbar({
+                    message: '请填写完整模块信息',
+                    position: 'top'
+                });
+                return;
+            }
+            // check module id
+            if (moduleId.match(/^([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)$/) == null) {
+                mdui.snackbar({
+                    message: '模块 id 不合法，详情请参考注意事项',
+                    position: 'top'
+                });
+                return;
+            }
+            // check version code
+            if (versionCode.match(/^[0-9]*$/) == null) {
+                mdui.snackbar({
+                    message: '版本代码不合法，详情请参考注意事项',
+                    position: 'top'
+                });
+                return;
+            }
+            mdui.confirm('确定生成字体模块？', function () {
+                mdui.snackbar({
+                    message: '正在生成字体模块...',
+                    position: 'top'
+                });
+                generateSingle(fontData, moduleId, moduleName, version, versionCode, author, description);
+            });
         }
     </script>
 </body>
