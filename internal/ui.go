@@ -8,8 +8,8 @@ import (
 
 const (
 	title  = "Magisk 字体模块生成器"
-	width  = 400
-	height = 620
+	width  = 480
+	height = 720
 )
 
 // ShowMainWindow shows the main window of the application.

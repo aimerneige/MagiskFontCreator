@@ -11,6 +11,12 @@
     <!-- MDUI CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
         integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <style>
+        body {
+            font-family: "LXGW WenKai Screen", sans-serif;
+        }
+    </style>
     <title>Magisk 字体模块生成器</title>
 </head>
 
@@ -38,22 +44,16 @@
 
     <!-- Main Body -->
     <div class="mdui-container-fluid">
-        <p class=".mdui-typo">
-            本软件是一个用于生成 Magisk 字体模块的工具，由于恶意 Magisk 模块可能会带来严重的安全隐患，使用本软件之前请务必确认软件来源，不要使用除 GitHub 外任何平台下载的软件。
-        </p>
-
-        <h3 class=".mdui-typo">
-            使用帮助
-        </h3>
-        <p class=".mdui-typo">
-            如果你只有一个 ttf 或 otf 文件，使用“简易单字体模式”
-        </p>
-        <p class=".mdui-typo">
-            如果你有多字重的字体家族，使用“简易多字重模式”
-        </p>
-        <p class=".mdui-typo">
-            如果你想要为英文、简体中文、繁体中文、日文、韩文等调整不同的字体，使用“高级 cjk 模式”
-        </p>
+        <div class="mdui-typo">
+            <h5>软件说明</h5>
+            <p>本软件是一个用于生成 Magisk 字体模块的工具，由于恶意 Magisk 模块可能会带来严重的安全隐患，使用本软件之前请务必确认软件来源，不要使用除 GitHub 外任何平台下载的软件。</p>
+            <h5>使用帮助</h5>
+            <ul>
+                <li>如果你只有一个 ttf 或 otf 文件，使用“简易单字体模式”</li>
+                <li>如果你有多字重的字体家族，使用“简易多字重模式”</li>
+                <li>如果你想要为英文、简体中文、繁体中文、日文、韩文等调整不同的字体，使用“高级 cjk 模式”</li>
+            </ul>
+        </div>
 
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
             onclick="singlePage()">
@@ -75,12 +75,10 @@
             关于
         </button>
 
-        <h3 class=".mdui-typo">
-            免责声明
-        </h3>
-        <p class=".mdui-typo">
-            刷机、刷入 Magisk 模块可能会导致系统无法正常启动，请在操作前审慎考虑，并建议备份重要数据。因操作不当导致的系统故障（包括卡开机动画、功能异常、数据丢失等）或效果异常与作者无关。
-        </p>
+        <div class="mdui-typo">
+            <h5>免责声明</h5>
+            <p>刷机、刷入 Magisk 模块可能会导致系统无法正常启动，请在操作前审慎考虑，并建议备份重要数据。因操作不当导致的系统故障（包括卡开机动画、功能异常、数据丢失等）或效果异常与作者无关。</p>
+        </div>
     </div>
 
     <!-- MDUI JavaScript -->

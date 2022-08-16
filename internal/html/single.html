@@ -11,6 +11,12 @@
     <!-- MDUI CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
         integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <style>
+        body {
+            font-family: "LXGW WenKai Screen", sans-serif;
+        }
+    </style>
     <title>Magisk 字体模块生成器</title>
 </head>
 
@@ -36,7 +42,70 @@
     </div>
 
     <div class="mdui-container-fluid">
-        <input type="file">
+
+        <div class="mdui-typo">
+            <h5>使用说明</h5>
+            <p>选择需要制作模块的 ttf 或 otf 字体文件，并填写模块相关信息后点击“生成字体模块”即可，有疑问请查阅后附注意事项。</p>
+        </div>
+
+        <button class="mdui-btn mdui-color-pink mdui-ripple mdui-hoverable" onclick="selectFont()">
+            选择字体文件
+        </button>
+        <label id="font_name"></label>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">模块 id</label>
+            <input class="mdui-textfield-input" id="module_id" type="text"
+                pattern="([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)" required>
+            <div class="mdui-textfield-error">模块 id 不能为空，且不能包含中文及特殊字符</div>
+        </div>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">模块名称</label>
+            <input class="mdui-textfield-input" id="module_name" required>
+            <div class="mdui-textfield-error">模块名称不能为空</div>
+        </div>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">版本号</label>
+            <input class="mdui-textfield-input" id="version" required>
+            <div class="mdui-textfield-error">版本号不能为空</div>
+        </div>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">版本代码</label>
+            <input class="mdui-textfield-input" id="version_code" required>
+            <div class="mdui-textfield-error">版本代码不能为空</div>
+        </div>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">模块作者</label>
+            <input class="mdui-textfield-input" id="author" required>
+            <div class="mdui-textfield-error">模块作者不能为空</div>
+        </div>
+
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">模块描述</label>
+            <textarea class="mdui-textfield-input" id="description" required></textarea>
+            <div class="mdui-textfield-error">模块描述不能为空</div>
+        </div>
+
+        <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
+            onclick="generate()">
+            生成字体模块
+        </button>
+
+        <div class="mdui-typo">
+            <h5>注意事项</h5>
+            <ul>
+                <li>字体文件仅支持 ttf 或 otf</li>
+                <li>模块 id 不可输入中文，类似于软件包名。示例：“com.aimerneige.magisk.source.han.sans”</li>
+                <li>模块名称可以是中文，类似软件名。示例：“思源黑体字体包”</li>
+                <li>模块版本号类似软件版本。示例：“v1.0.0”</li>
+                <li>版本代码只能是正整数，如果不知道它是什么，使用 1 即可。</li>
+                <li>模块描述示例：“使用「Magisk 字体模块生成器」生成的字体模块，可替换系统字体为思源黑体。”</li>
+            </ul>
+        </div>
 
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
             onclick="indexPage()">
@@ -50,7 +119,23 @@
         crossorigin="anonymous"></script>
     <!-- webview bind script -->
     <script>
-
+        var $ = mdui.$;
+        function selectFont() {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = e => {
+                var file = e.target.files[0];
+                if ((file.type != "font/ttf") && (file.type != "font/otf")) {
+                    mdui.snackbar({
+                        message: '请选择正确的字体文件',
+                        position: 'top'
+                    });
+                    return;
+                }
+                $('#font_name').text(file.name);
+            }
+            input.click();
+        }
     </script>
 </body>
 

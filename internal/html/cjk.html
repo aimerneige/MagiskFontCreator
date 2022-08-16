@@ -11,6 +11,12 @@
     <!-- MDUI CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
         integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <style>
+        body {
+            font-family: "LXGW WenKai Screen", sans-serif;
+        }
+    </style>
     <title>Magisk 字体模块生成器</title>
 </head>
 
@@ -36,7 +42,10 @@
     </div>
 
     <div class="mdui-container-fluid">
-        <input type="file">
+
+        <div class="mdui-typo">
+            <h3>敬请期待</h3>
+        </div>
 
         <button class="mdui-btn mdui-btn-block mdui-color-pink mdui-ripple mdui-hoverable mdui-center mdui-m-y-1"
             onclick="indexPage()">
@@ -50,7 +59,8 @@
         crossorigin="anonymous"></script>
     <!-- webview bind script -->
     <script>
-
+        function generate() {
+        }
     </script>
 </body>
 
