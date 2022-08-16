@@ -54,7 +54,7 @@
         <div class="mdui-typo">
             <button class="mdui-btn mdui-color-pink mdui-ripple mdui-hoverable" onclick="selectFont()">选择字体文件</button>
             <label id="font_name">当前没有选择字体</label>
-            <textarea hidden id="font_data" type="text" ></textarea>
+            <textarea hidden id="font_data" type="text"></textarea>
         </div>
 
         <!-- 模块信息 -->
@@ -197,6 +197,10 @@
                     position: 'top'
                 });
                 generateSingle(fontData, moduleId, moduleName, version, versionCode, author, description);
+                mdui.snackbar({
+                    message: '字体模块生成完成！请查看同级目录下的字体模块文件。',
+                    position: 'top'
+                });
             });
         }
     </script>
