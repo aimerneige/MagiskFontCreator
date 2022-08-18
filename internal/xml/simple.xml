@@ -64,7 +64,7 @@
         <font weight="900" style="italic">Roboto-BlackItalic.ttf</font>
         <font weight="700" style="normal">Roboto-Bold.ttf</font>
         <font weight="700" style="italic">Roboto-BoldItalic.ttf</font>
-    </family> 
+    </family>
     <!-- lxgw 注：调用动态 Roboto 兼容 Android 12 -->
     <family>
         <font weight="100" style="normal">Roboto-Regular.ttf
@@ -158,7 +158,7 @@
           <axis tag="wght" stylevalue="900" />
         </font>
     </family>
-    <!-- lxgw 注：自定义字体部分（终）-->    
+    <!-- lxgw 注：自定义字体部分（终）-->
 
     <!-- Note that aliases must come after the fonts they reference. -->
     <alias name="sans-serif-thin" to="sans-serif" weight="100" />
@@ -169,7 +169,7 @@
     <alias name="helvetica" to="sans-serif" />
     <alias name="tahoma" to="sans-serif" />
     <alias name="verdana" to="sans-serif" />
-    
+
     <!-- lxgw 注：屏蔽 Condensed 及 Serif 字体以提高覆盖率 -->
     <alias name="sans-serif-condensed" to="sans-serif" />
     <alias name="sans-serif-condensed-light" to="sans-serif-condensed" weight="300" />
@@ -1804,7 +1804,7 @@
     <family>
         <font weight="400" style="normal">Plangothic-P2.ttf</font>
     </family>
-    <!-- lxgw 注：增加对「遍黑体」的支持 （终）-->  
+    <!-- lxgw 注：增加对「遍黑体」的支持 （终）-->
     <!-- lxgw 注：最后增加对「天珩全字库」第 0、1、2、3 平面的支持 -->
     <family>
         <font weight="400" style="normal">TH-Tshyn-P0.ttf</font>
@@ -1815,5 +1815,5 @@
     <family>
         <font weight="400" style="normal">TH-Tshyn-P2.ttf</font>
     </family>
-    <!-- lxgw 注：最后增加对「天珩全字库」的支持 （终）-->  
+    <!-- lxgw 注：最后增加对「天珩全字库」的支持 （终）-->
 </familyset>

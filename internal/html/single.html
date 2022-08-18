@@ -55,6 +55,7 @@
             <button class="mdui-btn mdui-color-pink mdui-ripple mdui-hoverable" onclick="selectFont()">选择字体文件</button>
             <label id="font_name">当前没有选择字体</label>
             <textarea hidden id="font_data" type="text"></textarea>
+            <textarea hidden id="font_type" type="text"></textarea>
         </div>
 
         <!-- 模块信息 -->
@@ -138,6 +139,11 @@
                     });
                     return;
                 }
+                if (file.type == "font/ttf") {
+                    $('#font_type').text("ttf")
+                } else if (file.type == "font/otf") {
+                    $('#font_type').text("otf")
+                }
                 $('#font_name').text("当前选择的字体文件名：" + file.name);
                 // 读取字体文件并解析为 base64 字符串
                 var reader = new FileReader();
@@ -162,6 +168,7 @@
                 return;
             }
             fontData = $('#font_data').val();
+            fontType = $('#font_type').val();
             moduleId = $('#module_id').val();
             moduleName = $('#module_name').val();
             version = $('#version').val();
@@ -196,7 +203,7 @@
                     message: '正在生成字体模块...',
                     position: 'top'
                 });
-                generateSingle(fontData, moduleId, moduleName, version, versionCode, author, description);
+                generateSingle(fontData, fontType, moduleId, moduleName, version, versionCode, author, description);
                 mdui.snackbar({
                     message: '字体模块生成完成！请查看同级目录下的字体模块文件。',
                     position: 'top'
